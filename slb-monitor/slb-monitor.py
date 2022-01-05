@@ -21,6 +21,7 @@ start_time = (datetime.datetime.now()-datetime.timedelta(hours=8)-datetime.timed
 end_time = (datetime.datetime.now()-datetime.timedelta(hours=8)-datetime.timedelta(minutes=2)).strftime("%Y-%m-%dT%H:%M:00Z")
 #end_time = (datetime.datetime.now()-datetime.timedelta(hours=9)).strftime("%Y-%m-%dT%H:%M:00Z")
 
+
 def get_instance_info():
     request = CommonRequest()
     request.set_accept_format('json')
@@ -36,6 +37,7 @@ def get_instance_info():
     Datapoint = response_dic["LoadBalancers"]["LoadBalancer"]
     return Datapoint
 
+
 def get_slb_metric():
     request = DescribeMetricMetaListRequest()
     request.set_accept_format('json')
@@ -46,6 +48,8 @@ def get_slb_metric():
     response_dic = json.loads(str(response, encoding='utf-8'))
     Datapoint = response_dic["Resources"]["Resource"]
     return Datapoint
+
+
 def get_slb_data(metric):
     request = DescribeMetricListRequest()
     request.set_accept_format('json')
